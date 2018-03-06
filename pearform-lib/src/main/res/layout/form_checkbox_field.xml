@@ -14,16 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/label"
-        android:text="Label text"
-        android:textSize="@dimen/form_card_text_size"
-        android:gravity="center_vertical"
-        android:layout_height="match_parent"
-        android:layout_width="wrap_content" />
+
 
     <LinearLayout
-        android:gravity="right"
+        android:gravity="left"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <CheckBox
@@ -32,5 +26,13 @@
             android:buttonTint="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/label"
+            android:text="Label text"
+            android:textSize="@dimen/form_card_text_size"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content" />
     </LinearLayout>
+
 </LinearLayout>

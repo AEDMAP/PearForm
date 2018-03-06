@@ -3,6 +3,8 @@ package com.mprimavera.pearform.view;
 import android.content.Context;
 
 import com.mprimavera.pearform.R;
+import com.mprimavera.pearform.model.fields.CheckBox;
+import com.mprimavera.pearform.model.fields.RadioGroup;
 import com.mprimavera.pearform.model.fields.Spinner;
 import com.mprimavera.pearform.model.fields.Switch;
 import com.mprimavera.pearform.model.fields.TextInfo;
@@ -99,5 +101,22 @@ public class FormBuilder {
     public Switch switcher(String resultBundleKey, String text, int iconResource) {
         return switcher(resultBundleKey, text)
             .icon(iconResource);
+    }
+
+    public CheckBox checkBox(String label){
+        CheckBox checkBox = new CheckBox(mContext)
+                .label(label);
+        return  checkBox;
+
+    }
+
+    public RadioGroup radioGroup(String resultBundleKey,String []labels,RadioGroup.IFieldValidator fieldValidator){
+
+        RadioGroup radioGroup =  new RadioGroup(mContext)
+                .addButton(labels)
+                .resultKey(resultBundleKey)
+                .validator(fieldValidator);
+
+        return  radioGroup;
     }
 }
