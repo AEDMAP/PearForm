@@ -158,13 +158,13 @@ public class Spinner<T extends Serializable> extends FieldWidget {
     public void prefill(Bundle bundle) {
         if(mResultKey != null && bundle != null) {
             int value = bundle.getInt(mResultKey); // TODO restore this line, remove two above
-            if(value != 0) {
+          //  if(value != 0) {
                 if(value >= 0 && value <= (mLabels.length - 1)) {
-                    mSpinner.setText(mLabels[value - 1]); // IDs start from 1, arrays from 0
-                    mSelectedIndex = value - 1;
+                    mSpinner.setText(mLabels[value ]); // IDs start from 1, arrays from 0
+                    mSelectedIndex = value ;
                     mItemSelected = true;
                 }
-            }
+         //   }
         }
     }
 
