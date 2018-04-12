@@ -21,6 +21,7 @@ public class Spinner<T extends Serializable> extends FieldWidget {
     private boolean mItemSelected;
     private int mSelectedIndex;
     private boolean mMandatory;
+    private String mError;
 
     public interface SpinnerListener<T> {
         void onItemSelected(T item);
@@ -137,7 +138,11 @@ public class Spinner<T extends Serializable> extends FieldWidget {
 
     @Override public boolean validate() {
         if(mItemSelected || !mMandatory) return true; // Requires selection by default
-        else return false;
+        else{
+            if(mError != null)
+                showError(mError);
+            return false;
+        }
     }
 
     @Override
@@ -185,6 +190,15 @@ public class Spinner<T extends Serializable> extends FieldWidget {
     public void reset() {
         mItemSelected = false;
         mSpinner.setText(null);
+    }
+
+    public Spinner error(String error) {
+        mError = error;
+        return this;
+    }
+
+    public void showError(String error) {
+        mSpinner.setError(error);
     }
 
     @Override
