@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.mprimavera.pearform.R;
 import com.mprimavera.pearform.contracts.IValidator;
 import com.mprimavera.pearform.model.FieldWidget;
@@ -54,7 +55,7 @@ public class Switch extends FieldWidget {
     }
 
     public Switch prefillWhen(boolean condition, Bundle bundle) {
-        if(condition) prefill(bundle);
+        if (condition) prefill(bundle);
         return this;
     }
 
@@ -93,11 +94,13 @@ public class Switch extends FieldWidget {
     public void setImageDrawable(Drawable drawable) {
         mLeftIcon.setImageDrawable(drawable);
     }
+
     public void setImageBitmap(Bitmap bitmap) {
         mLeftIcon.setImageBitmap(bitmap);
     }
 
-    @Override public boolean validate() {
+    @Override
+    public boolean validate() {
         return true;
     }
 
@@ -108,23 +111,34 @@ public class Switch extends FieldWidget {
     @Override
     public Bundle getValue() {
         Bundle bundle = new Bundle();
-        bundle.putBoolean(mResultKey, mSwitch.isEnabled());
+        bundle.putBoolean(mResultKey, mSwitch.isChecked());
         return bundle;
     }
 
     @Override
     public void prefill(Bundle bundle) {
-        if(bundle != null) {
+        if (bundle != null) {
             boolean enabled = bundle.getBoolean(mResultKey);
             mSwitch.setChecked(enabled);
         }
     }
 
-    @Override public void disable() {
+    @Override
+    public boolean hasFieldBeenUpdated(Bundle initialBundle) {
+
+        boolean oldValue = initialBundle.getBoolean(mResultKey);
+        Log.d("TEST_TIMES", "oldValue: " + oldValue);
+        Log.d("TEST_TIMES", "mSwitch.isChecked(): " + mSwitch.isChecked());
+        return oldValue != mSwitch.isChecked();
+    }
+
+    @Override
+    public void disable() {
         mSwitch.setClickable(false);
     }
 
-    @Override public void enable() {
+    @Override
+    public void enable() {
         mSwitch.setClickable(true);
     }
 
