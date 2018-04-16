@@ -125,11 +125,12 @@ public class Switch extends FieldWidget {
 
     @Override
     public boolean hasFieldBeenUpdated(Bundle initialBundle) {
-
-        boolean oldValue = initialBundle.getBoolean(mResultKey);
-        Log.d("TEST_TIMES", "oldValue: " + oldValue);
-        Log.d("TEST_TIMES", "mSwitch.isChecked(): " + mSwitch.isChecked());
-        return oldValue != mSwitch.isChecked();
+        if (initialBundle != null) {
+            boolean oldValue = initialBundle.getBoolean(mResultKey);
+            Log.d("TEST_TIMES", "oldValue: " + oldValue);
+            Log.d("TEST_TIMES", "mSwitch.isChecked(): " + mSwitch.isChecked());
+            return oldValue != mSwitch.isChecked();
+        } else return false;
     }
 
     @Override
