@@ -11,7 +11,6 @@
 
     <TextView
         android:id="@+id/label"
-        android:text="Accessibility"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/text_info_widget_label_size"
         android:textAllCaps="true"
@@ -20,7 +19,6 @@
 
     <TextView
         android:id="@+id/text"
-        android:text="Test text"
         android:textColor="@android:color/black"
         android:textSize="@dimen/text_info_widget_text_size"
         android:layout_width="match_parent"
