@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.mprimavera.pearform.R;
 import com.mprimavera.pearform.contracts.IValidator;
 import com.mprimavera.pearform.model.FieldWidget;
@@ -50,8 +51,18 @@ public class TextInfo extends FieldWidget {
         return this;
     }
 
-    public void setText(String text) { mText.setText(text); }
-    public void setLabel(String label) { mLabel.setText(label); }
+    public void setText(String text) {
+        mText.setText(text);
+    }
+
+    public void setLabel(String label) {
+        if (label != null) {
+            mLabel.setText(label);
+            mLabel.setVisibility(VISIBLE);
+        } else {
+            mLabel.setVisibility(GONE);
+        }
+    }
 
     public TextInfo text(String text) {
         setText(text);
@@ -74,25 +85,37 @@ public class TextInfo extends FieldWidget {
     }
 
     public TextInfo prefillWhen(boolean condition, Bundle bundle) {
-        if(condition && bundle != null) prefill(bundle);
+        if (condition && bundle != null) prefill(bundle);
         return this;
     }
 
-    @Override public void prefill(Bundle bundle) {
-        if(bundle != null) {
+    @Override
+    public void prefill(Bundle bundle) {
+        if (bundle != null) {
             String text = bundle.getString(mResultKey);
-            if(text != null) mText.setText(text);
+            if (text != null) mText.setText(text);
         }
     }
 
-    @Override public void reset() {}
-    @Override public void setValidator(IValidator validator) {}
-    @Override public boolean validate() { return true; }
-    @Override public Bundle getValue() {
+    @Override
+    public void reset() {
+    }
+
+    @Override
+    public void setValidator(IValidator validator) {
+    }
+
+    @Override
+    public boolean validate() {
+        return true;
+    }
+
+    @Override
+    public Bundle getValue() {
         String text = mText.getText().toString();
         Bundle result = new Bundle();
 
-        if(text != null) {
+        if (text != null) {
             result.putString(mResultKey, text);
             return result;
         } else return null;
