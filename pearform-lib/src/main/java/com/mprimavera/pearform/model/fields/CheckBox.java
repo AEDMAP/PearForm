@@ -87,8 +87,8 @@ public class CheckBox extends FieldWidget {
 
     @Override
     public void prefill(Bundle bundle) {
-        boolean enabled = bundle.getBoolean(mResultKey);
-        this.checkBox.setEnabled(enabled);
+        //boolean enabled = bundle.getBoolean(mResultKey);
+        //this.checkBox.setEnabled(enabled);
     }
 
     @Override public boolean validate() { return true; }
