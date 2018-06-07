@@ -13,6 +13,9 @@ public class RadioGroup extends FieldWidget {
     private android.widget.RadioGroup mRadioGroup;
     protected IFieldValidator mValidator;
     protected String mError;
+    protected String[] mLabels;
+    protected int[] mIds;
+
 
     public RadioGroup(Context context) {
         super(context);
@@ -47,28 +50,32 @@ public class RadioGroup extends FieldWidget {
         mRadioGroup = findViewById(R.id.radioGroup);
     }
 
-    public RadioGroup addButton(String []labels){
+    public RadioGroup addButton(String[] labels, int[] ids) {
 
-        for(int i = 0; i < labels.length; i++) {
+        for (int i = 0; i < labels.length; i++) {
             android.widget.RadioButton radioButton = new android.widget.RadioButton(mContext);
             radioButton.setText(labels[i]);
+            radioButton.setId(ids[i]);
             this.mRadioGroup.addView(radioButton);
         }
-
-
+        mLabels = labels;
+        mIds = ids;
         return this;
     }
-    public RadioGroup validator(IValidator validator){
+
+    public RadioGroup validator(IValidator validator) {
         this.setValidator(validator);
         return this;
     }
 
 
-    @Override public void enable() {
+    @Override
+    public void enable() {
         this.mRadioGroup.setClickable(true);
     }
 
-    @Override public void disable() {
+    @Override
+    public void disable() {
         this.mRadioGroup.setClickable(false);
     }
 
@@ -85,25 +92,33 @@ public class RadioGroup extends FieldWidget {
         mRadioGroup.setError(error);
         */
     }
+
     public void hideError() {
      /*   mRadioGroup.setErrorEnabled(false);
         mRadioGroup.setError(null);
         */
     }
 
-    @Override public boolean validate() {
-        if(mValidator != null) {
+    @Override
+    public boolean validate() {
+        if (mValidator != null) {
             boolean valid = mValidator.validate(mRadioGroup);
-            if(!valid) {
-                if(mError != null)
+            if (!valid) {
+                if (mError != null)
                     showError(mError);
             } else hideError();
             return valid;
         } else return true; // Default to NOT_REQUIRED
     }
-    @Override public void reset() { this.mRadioGroup.setEnabled(false); }
-    @Override public void setValidator(IValidator validator) {
-        mValidator= (IFieldValidator)validator;
+
+    @Override
+    public void reset() {
+        this.mRadioGroup.setEnabled(false);
+    }
+
+    @Override
+    public void setValidator(IValidator validator) {
+        mValidator = (IFieldValidator) validator;
     }
 
 

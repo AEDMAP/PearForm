@@ -110,10 +110,10 @@ public class FormBuilder {
 
     }
 
-    public RadioGroup radioGroup(String resultBundleKey,String []labels,RadioGroup.IFieldValidator fieldValidator){
+    public RadioGroup radioGroup(String resultBundleKey,String []labels,int []ids,RadioGroup.IFieldValidator fieldValidator){
 
         RadioGroup radioGroup =  new RadioGroup(mContext)
-                .addButton(labels)
+                .addButton(labels,ids)
                 .resultKey(resultBundleKey)
                 .validator(fieldValidator);
 
