@@ -118,6 +118,8 @@ public class Switch extends FieldWidget {
     @Override
     public void prefill(Bundle bundle) {
         if (bundle != null) {
+            Log.d("TEST_BOTHER", "prefill " + mTextView.getText());
+            Log.d("TEST_BOTHER", "enable prefill " + bundle.getBoolean(mResultKey));
             boolean enabled = bundle.getBoolean(mResultKey);
             mSwitch.setChecked(enabled);
         }
@@ -131,6 +133,10 @@ public class Switch extends FieldWidget {
             Log.d("TEST_TIMES", "mSwitch.isChecked(): " + mSwitch.isChecked());
             return oldValue != mSwitch.isChecked();
         } else return false;
+    }
+
+    public void setChecked(boolean condition) {
+        mSwitch.setChecked(condition);
     }
 
     @Override
