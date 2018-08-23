@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.mprimavera.pearform.R;
 import com.mprimavera.pearform.model.fields.CheckBox;
+import com.mprimavera.pearform.model.fields.DateInput;
+import com.mprimavera.pearform.model.fields.DatePicker;
 import com.mprimavera.pearform.model.fields.RadioGroup;
 import com.mprimavera.pearform.model.fields.Spinner;
 import com.mprimavera.pearform.model.fields.Switch;
@@ -89,6 +91,18 @@ public class FormBuilder {
         Spinner spinner = new Spinner(mContext);
         spinner.setResultKey(resultBundleKey);
         return spinner;
+    }
+
+    public DatePicker datePicker(String resultBundleKey) {
+        DatePicker datePicker = new DatePicker(mContext);
+        datePicker.setResultKey(resultBundleKey);
+        return datePicker;
+    }
+
+    public DateInput dateInput(String resultBundleKey) {
+        DateInput dateEdit = new DateInput(mContext);
+        dateEdit.setResultKey(resultBundleKey);
+        return dateEdit;
     }
 
     public Switch switcher(String resultBundleKey, String text) {
