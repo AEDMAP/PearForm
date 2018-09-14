@@ -137,7 +137,7 @@ public class DateInput extends FieldWidget {
                     int yy = Integer.parseInt(clean.substring(2, 4));
                     int zzzz = Integer.parseInt(clean.substring(4, 8));
 
-                    String dateStr = String.format("%s/%s/%s", xx,yy,zzzz);
+                    String dateStr = String.format("%s/%s/%s", xx, yy, zzzz);
                     DateFormat formatter = new SimpleDateFormat(mFormat);
                     Date date;
                     try {
@@ -149,8 +149,13 @@ public class DateInput extends FieldWidget {
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(date);
                     int year = cal.get(Calendar.YEAR);
-                    int mon = cal.get(Calendar.MONTH);
+                    int mon = cal.get(Calendar.MONTH) + 1;
                     int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                    Log.d("TEST_BIRTH", "day: " + day);
+                    Log.d("TEST_BIRTH", "mon: " + mon);
+                    Log.d("TEST_BIRTH", "year: " + year);
+
 
                     boolean valid = true;
                     if (mon < 1 || mon > 12) valid = false;
@@ -176,10 +181,9 @@ public class DateInput extends FieldWidget {
                     if (!valid) {
                         showError();
                         isValid = false;
-                    }
-                    else {
+                    } else {
                         hideError();
-                        isValid=true;
+                        isValid = true;
                     }
                 }
 
