@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="4dp"
-    android:paddingLeft="2dp"
-    android:paddingRight="2dp"
+    android:paddingStart="2dp"
+    android:paddingEnd="2dp"
     android:paddingTop="4dp">
 
     <TextView
