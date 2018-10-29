@@ -3,6 +3,7 @@ package com.mprimavera.pearform.model.fields;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.LinearLayout;
@@ -11,8 +12,6 @@ import android.widget.TextView;
 import com.mprimavera.pearform.R;
 import com.mprimavera.pearform.contracts.IValidator;
 import com.mprimavera.pearform.model.FieldWidget;
-
-import java.util.FormatFlagsConversionMismatchException;
 
 public class TextInfo extends FieldWidget {
     private LinearLayout mLayout;
@@ -62,6 +61,10 @@ public class TextInfo extends FieldWidget {
         } else {
             mLabel.setVisibility(GONE);
         }
+    }
+
+    public void typeNumeric() {
+        mText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
     }
 
     public TextInfo text(String text) {
