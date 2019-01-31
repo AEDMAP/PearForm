@@ -13,13 +13,13 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class Spinner<T extends Serializable> extends FieldWidget {
-    private MaterialBetterSpinner mSpinner;
-    private HashMap<Integer, T> mElements;
-    private String[] mLabels;
+    protected MaterialBetterSpinner mSpinner;
+    protected HashMap<Integer, T> mElements;
+    protected String[] mLabels;
     private IFieldValidator mValidator;
     private SpinnerListener mListener;
-    private boolean mItemSelected;
-    private int mSelectedIndex;
+    protected boolean mItemSelected;
+    protected int mSelectedIndex;
     private boolean mMandatory;
     private String mError;
 
@@ -171,6 +171,10 @@ public class Spinner<T extends Serializable> extends FieldWidget {
                 }
          //   }
         }
+    }
+
+    protected void setText(String text){
+        mSpinner.setText(text);
     }
 
     @Override public void disable() {
